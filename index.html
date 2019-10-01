@@ -11,9 +11,78 @@
 <body>
     <div class="container">
         <h1>Trivial Trivia Game</h1>
-        <button>Start</button>
+        <div id="target">
+            <button class="start">Start</button>
+            <div class="question">
+                <p>Time Remaining: </p>
+                <!-- souce: https://www.buzzfeed.com/shylawatson/pop-culture-quiz-july-week-two -->
+                <div class="num1">
+                        <p>1. Tom Hanks celebrated a birthday this week. How old is he?</p>
+                            <input type="radio" name="ch1">
+                            <label for="ch1">53</label>
+                            <input type="radio" name="ch2">
+                            <label for="ch2"> 63</label>
+                            <input type="radio" name="ch3">
+                            <label for="ch3">73</label>
+                            <input type="radio" name="ch4">
+                            <label for="ch4">83</label>
+                        <!-- answer: 63. The Toy Story 4 actor was born on July 9, 1956! He celebrated the day by jumping off a boat in new beach clothes!-->
+                </div>
+                <div class="num2">
+                        <p>2. Which team won FIFA Women's World Cup?</p>
+                            <input type="radio" name="ch1">
+                            <label for="ch1">United States</label>
+                            <input type="radio" name="ch2">
+                            <label for="ch2">Netherlands</label>
+                            <input type="radio" name="ch3">
+                            <label for="ch3">England</label>
+                            <input type="radio" name="ch4">
+                            <label for="ch4">Sweden</label>
+                            <!-- answer: The US Women's Soccer Team won their fourth FIFA World Cup title! Check out how they celebrated! -->
+                </div>
+                <div class="num3">
+                    <p>3. Lil Nas X did another "Old Town Road" remix with which celeb?</p>
+                        <input type="radio" name="ch1">
+                        <label for="ch1">Nicki Minaj</label>
+                        <input type="radio" name="ch2">
+                        <label for="ch2">Gordon Ramsay</label>
+                        <input type="radio" name="ch3">
+                        <label for="ch3">Mason Ramsey</label>
+                        <input type="radio" name="ch4">
+                        <label for="ch4">Megan Thee Stallion</label>
+                        <!-- anwer: The new remix, which fans are loving, includes Lil Nas X, Billy Ray Cyrus, Mason Ramsey, as well as Young Thug. You can listen to it here. -->
+                </div>
+                <div class="num4">
+                        <p>4. Who was just named the highest-paid celebrity?</p>
+                            <input type="radio" name="ch1">
+                            <label for="ch1">Kylie Jenner</label>
+                            <input type="radio" name="ch2">
+                            <label for="ch2">LeBron James</label>
+                            <input type="radio" name="ch3">
+                            <label for="ch3">J.K. Rowling</label>
+                            <input type="radio" name="ch4">
+                            <label for="ch4">Taylor Swift</label>
+                            <!-- answer: Taylor Swift! Forbes recently released their list of The World's Highest-Paid Celebrities from 2018-2019. You can check out who else made the list here! -->
+                </div>
+                <div class="num5">
+                    <p>5. Which fan favorite TV show is NOT leaving Netflix?</p>
+                        <input type="radio" name="ch1">
+                        <label for="ch1">Friends</label>
+                        <input type="radio" name="ch2">
+                        <label for="ch2">The Office</label>
+                        <input type="radio" name="ch3">
+                        <label for="ch3">Pretty Little Liars</label>
+                        <input type="radio" name="ch4">
+                        <label for="ch4">Parks and Recreation</label>
+                        <!-- answer: Parks and Recreation! The series will remain on Netflix...for now. But, Friends, Pretty Little Liars, and The Office will all be removed from Netflix next year and placed on Warner Media's new streaming platform, HBO Max. -->
+                </div> 
+            </div>
+        </div>
+        
     </div>
-    
-<script src="./assets/javascript/game.js"></script>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>   
+<script type="text/javascript" src="./assets/javascript/game.js"></script>
 </body>
 </html>

@@ -9,26 +9,36 @@ html {
   body {
     margin: 0;
     padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
   }
 
   h1 {
       font-family: 'Viga', sans-serif;
-      font-size: 100px;
-      margin: 0
+      font-size: 80px;
+      margin: 0;
   }
 
   button {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      max-width: 100px;
-      height: 50px;;
+      max-width: 80px;
+      height: 40px;;
       width: 100%;
-      font-size: 25px;
+      font-size: 20px;
   }
+  
 
   .container {
       margin: 250px auto;
       max-width: 1000px;
       text-align: center;
+  }
+
+  .question {
+      max-width: 750px;
+      margin: 0 auto;
+      padding: 20px 0;
+      background: white;
   }
 
 @media screen and (max-width: 980px){
