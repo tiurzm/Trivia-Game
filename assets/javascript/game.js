@@ -25,12 +25,15 @@ $(document).ready(function(){
     console.log(allQuestion);
     console.log(allQuestion[0].answers.a);
 
+    var timeRemain = 30;
+    var intervalId;
+
     $(".start").on("click", function(){
         $(this).remove();
         var newDiv = $("<div>");
         newDiv.addClass("timer");
         $("#target").append(newDiv);
-        $(".timer").append("<p>Time remaining:<span class=time>0</span></p>");
+        $(".timer").append("<p>Time remaining:<span class=time> 30</span> seconds</p>");
         var question1 = $("<div>");
         question1.addClass("question");
         $(".timer").append(question1);
@@ -44,6 +47,28 @@ $(document).ready(function(){
         $(".question").append("<input type=radio name=q4><label for=q4>"+allQuestion[3].answers.a+"</label> <input type=radio name=q4><label for=q4>"+allQuestion[3].answers.b+"</label> <input type=radio name=q4><label for=q4>"+allQuestion[3].answers.c+"</label> <input type=radio name=q4><label for=q4>"+allQuestion[3].answers.d+"</label>");
         $(".question").append("<p>"+ allQuestion[4].question +"</p>");
         $(".question").append("<input type=radio name=q5><label for=q5>"+allQuestion[4].answers.a+"</label> <input type=radio name=q5><label for=q5>"+allQuestion[4].answers.b+"</label> <input type=radio name=q5><label for=q5>"+allQuestion[4].answers.c+"</label> <input type=radio name=q5><label for=q5>"+allQuestion[4].answers.d+"</label>");
+        
+        function run(){
+            clearInterval(intervalId);
+            intervalId = setInterval(decremment, 1000);
+        };
+
+        function decremment(){
+            timeRemain--;
+            $(".time").html(timeRemain);
+            if(timeRemain === 0){
+                stop();
+                alert("Time Up!");
+            }
+        };
+
+        function stop(){
+            clearInterval(intervalId);
+            timeRemain = 30;
+            $(".time").html(timeRemain);
+        }
+
+        run();
     
     });
 });
