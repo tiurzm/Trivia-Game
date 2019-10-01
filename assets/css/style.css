@@ -1,0 +1,50 @@
+  
+html { 
+    background: url(../images/tr.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  h1 {
+      font-family: 'Viga', sans-serif;
+      font-size: 100px;
+      margin: 0
+  }
+
+  button {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      max-width: 100px;
+      height: 50px;;
+      width: 100%;
+      font-size: 25px;
+  }
+
+  .container {
+      margin: 250px auto;
+      max-width: 1000px;
+      text-align: center;
+  }
+
+@media screen and (max-width: 980px){
+    .container {
+        margin: 225px auto;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .container {
+        margin: 200px auto;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .container {
+        margin: 155px auto;
+    }
+}
