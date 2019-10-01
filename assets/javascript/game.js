@@ -23,21 +23,27 @@ $(document).ready(function(){
         }
     ]; 
     console.log(allQuestion);
+    console.log(allQuestion[0].answers.a);
 
     $(".start").on("click", function(){
         $(this).remove();
         var newDiv = $("<div>");
-        newDiv.addClass("questions");
+        newDiv.addClass("timer");
         $("#target").append(newDiv);
-        $(".questions").append("<p>Time remaining:<span class=time>0</span></p>");
+        $(".timer").append("<p>Time remaining:<span class=time>0</span></p>");
         var question1 = $("<div>");
-        question1.addClass("num1");
-        $(".questions").append(question1);
-        $(".num1").append("<p>"+ allQuestion[0].question +"</p>");
-        $(".num1").append("<p>"+ allQuestion[1].question +"</p>");
-        $(".num1").append("<p>"+ allQuestion[2].question +"</p>");
-        $(".num1").append("<p>"+ allQuestion[3].question +"</p>");
-        $(".num1").append("<p>"+ allQuestion[4].question +"</p>");
+        question1.addClass("question");
+        $(".timer").append(question1);
+        $(".question").append("<p>"+ allQuestion[0].question +"</p>");
+        $(".question").append("<input type=radio name=q1><label for=q1>"+allQuestion[0].answers.a+"</label> <input type=radio name=q1><label for=q1>"+allQuestion[0].answers.b+"</label> <input type=radio name=q1><label for=q1>"+allQuestion[0].answers.c+"</label> <input type=radio name=q1><label for=q1>"+allQuestion[0].answers.d+"</label>");
+        $(".question").append("<p>"+ allQuestion[1].question +"</p>");
+        $(".question").append("<input type=radio name=q2><label for=q2>"+allQuestion[1].answers.a+"</label> <input type=radio name=q2><label for=q2>"+allQuestion[1].answers.b+"</label> <input type=radio name=q2><label for=q2>"+allQuestion[1].answers.c+"</label> <input type=radio name=q2><label for=q2>"+allQuestion[1].answers.d+"</label>");
+        $(".question").append("<p>"+ allQuestion[2].question +"</p>");
+        $(".question").append("<input type=radio name=q3><label for=q3>"+allQuestion[2].answers.a+"</label> <input type=radio name=q3><label for=q3>"+allQuestion[2].answers.b+"</label> <input type=radio name=q3><label for=q3>"+allQuestion[2].answers.c+"</label> <input type=radio name=q3><label for=q3>"+allQuestion[2].answers.d+"</label>");
+        $(".question").append("<p>"+ allQuestion[3].question +"</p>");
+        $(".question").append("<input type=radio name=q4><label for=q4>"+allQuestion[3].answers.a+"</label> <input type=radio name=q4><label for=q4>"+allQuestion[3].answers.b+"</label> <input type=radio name=q4><label for=q4>"+allQuestion[3].answers.c+"</label> <input type=radio name=q4><label for=q4>"+allQuestion[3].answers.d+"</label>");
+        $(".question").append("<p>"+ allQuestion[4].question +"</p>");
+        $(".question").append("<input type=radio name=q5><label for=q5>"+allQuestion[4].answers.a+"</label> <input type=radio name=q5><label for=q5>"+allQuestion[4].answers.b+"</label> <input type=radio name=q5><label for=q5>"+allQuestion[4].answers.c+"</label> <input type=radio name=q5><label for=q5>"+allQuestion[4].answers.d+"</label>");
     
     });
 });
