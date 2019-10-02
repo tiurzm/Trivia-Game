@@ -44,36 +44,53 @@ $(document).ready(function(){
         },
     ];
     console.log(allQuestion);
-    console.log(allQuestion[0].answers.a);
+    console.log(allQuestion[0].correctAnswer);
 
-    var timeRemain = 10;
+    var timeRemain = 60;
     var intervalId;
+    var right = "";
+    var wrong = "";
+    var none = ""; 
 
     $(".start").on("click", function(){
         $(this).remove();
         var newDiv = $("<div>");
         newDiv.addClass("timer");
         $("#target").append(newDiv);
-        $(".timer").append("<p>Time remaining:<span class=time> 10</span> seconds</p>");
-        var question1 = $("<div>");
+        $(".timer").append("<p>Time remaining:<span class=time> 60</span> seconds</p>");
+        var question1 = $("<form>");
         question1.addClass("question");
         $(".timer").append(question1);
         question();
-        // displat done button
+        radio();
+        // display done button
         $(".timer").append("<button class=submit>Done</button>");
         run();
         $(".submit").on("click", function(){
+            stop();
             done();
+            if(right === allQuestion[0].correctAnswer){
+                console.log("good");
+            }
         });
         
-
         // display all question:
         function question(){
             for(var i = 0; i < allQuestion.length; i++){
             $(".question").append("<p>"+ allQuestion[i].question +"</p>");
-            $(".question").append("<input type=radio><label>"+allQuestion[i].answers.a+"</label> <input type=radio><label>"+allQuestion[i].answers.b+"</label> <input type=radio><label>"+allQuestion[i].answers.c+"</label> <input type=radio><label>"+allQuestion[i].answers.d+"</label>");
+            $(".question").append("<input class=for type=radio><label class=check>"+allQuestion[i].answers.a+"</label> <input class=for type=radio><label class=check>"+allQuestion[i].answers.b+"</label> <input class=for type=radio><label class=check>"+allQuestion[i].answers.c+"</label> <input class=for type=radio><label class=check>"+allQuestion[i].answers.d+"</label>");
             }
         };
+
+        function radio(){
+            $("input:radio").each(function() {
+                if($(this).is(":checked")){
+                    console.log("check"); 
+                }
+            });
+        }
+
+        
         // set timer
         function run(){
             clearInterval(intervalId);
@@ -91,6 +108,7 @@ $(document).ready(function(){
             }
         };
 
+        // display the result
         function done(){
             $(".timer").remove();
             var done = $("<div>");
@@ -102,7 +120,7 @@ $(document).ready(function(){
         // stop time
         function stop(){
             clearInterval(intervalId);
-            timeRemain = 10;
+            timeRemain = 60;
             $(".time").html(timeRemain);
         }
     });
