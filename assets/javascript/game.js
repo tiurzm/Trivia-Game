@@ -61,30 +61,12 @@ $(document).ready(function(){
         var question1 = $("<div>");
         question1.addClass("question");
         $(".timer").append(question1);
-        $(".question").append("<p>"+ allQuestion[0].question +"</p>");
-        $(".question").append("<input type=radio name=q1><label for=q1>"+allQuestion[0].answers.a+"</label> <input type=radio name=q1><label for=q1>"+allQuestion[0].answers.b+"</label> <input type=radio name=q1><label for=q1>"+allQuestion[0].answers.c+"</label> <input type=radio name=q1><label for=q1>"+allQuestion[0].answers.d+"</label>");
-        $(".question").append("<p>"+ allQuestion[1].question +"</p>");
-        $(".question").append("<input type=radio name=q2><label for=q2>"+allQuestion[1].answers.a+"</label> <input type=radio name=q2><label for=q2>"+allQuestion[1].answers.b+"</label> <input type=radio name=q2><label for=q2>"+allQuestion[1].answers.c+"</label> <input type=radio name=q2><label for=q2>"+allQuestion[1].answers.d+"</label>");
-        $(".question").append("<p>"+ allQuestion[2].question +"</p>");
-        $(".question").append("<input type=radio name=q3><label for=q3>"+allQuestion[2].answers.a+"</label> <input type=radio name=q3><label for=q3>"+allQuestion[2].answers.b+"</label> <input type=radio name=q3><label for=q3>"+allQuestion[2].answers.c+"</label> <input type=radio name=q3><label for=q3>"+allQuestion[2].answers.d+"</label>");
-        $(".question").append("<p>"+ allQuestion[3].question +"</p>");
-        $(".question").append("<input type=radio name=q4><label for=q4>"+allQuestion[3].answers.a+"</label> <input type=radio name=q4><label for=q4>"+allQuestion[3].answers.b+"</label> <input type=radio name=q4><label for=q4>"+allQuestion[3].answers.c+"</label> <input type=radio name=q4><label for=q4>"+allQuestion[3].answers.d+"</label>");
-        $(".question").append("<p>"+ allQuestion[4].question +"</p>");
-        $(".question").append("<input type=radio name=q5><label for=q5>"+allQuestion[4].answers.a+"</label> <input type=radio name=q5><label for=q5>"+allQuestion[4].answers.b+"</label> <input type=radio name=q5><label for=q5>"+allQuestion[4].answers.c+"</label> <input type=radio name=q5><label for=q5>"+allQuestion[4].answers.d+"</label>");
-        $(".question").append("<p>"+ allQuestion[5].question +"</p>");
-        $(".question").append("<input type=radio name=q6><label for=q6>"+allQuestion[5].answers.a+"</label> <input type=radio name=q6><label for=q6>"+allQuestion[0].answers.b+"</label> <input type=radio name=q6><label for=q6>"+allQuestion[5].answers.c+"</label> <input type=radio name=q6><label for=q6>"+allQuestion[5].answers.d+"</label>");
-        $(".question").append("<p>"+ allQuestion[6].question +"</p>");
-        $(".question").append("<input type=radio name=q7><label for=q7>"+allQuestion[6].answers.a+"</label> <input type=radio name=q7><label for=q7>"+allQuestion[0].answers.b+"</label> <input type=radio name=q7><label for=q7>"+allQuestion[6].answers.c+"</label> <input type=radio name=q7><label for=q7>"+allQuestion[6].answers.d+"</label>");
-        $(".question").append("<p>"+ allQuestion[7].question +"</p>");
-        $(".question").append("<input type=radio name=q8><label for=q8>"+allQuestion[7].answers.a+"</label> <input type=radio name=q8><label for=q8>"+allQuestion[0].answers.b+"</label> <input type=radio name=q8><label for=q8>"+allQuestion[7].answers.c+"</label> <input type=radio name=q8><label for=q8>"+allQuestion[7].answers.d+"</label>");
-        $(".question").append("<p>"+ allQuestion[8].question +"</p>");
-        $(".question").append("<input type=radio name=q9><label for=q9>"+allQuestion[8].answers.a+"</label> <input type=radio name=q9><label for=q9>"+allQuestion[0].answers.b+"</label> <input type=radio name=q9><label for=q9>"+allQuestion[8].answers.c+"</label> <input type=radio name=q9><label for=q9>"+allQuestion[8].answers.d+"</label>");
-        $(".question").append("<p>"+ allQuestion[9].question +"</p>");
-        $(".question").append("<input type=radio name=q10><label for=q10>"+allQuestion[9].answers.a+"</label> <input type=radio name=q10><label for=q10>"+allQuestion[0].answers.b+"</label> <input type=radio name=q10><label for=q10>"+allQuestion[9].answers.c+"</label> <input type=radio name=q10><label for=q10>"+allQuestion[9].answers.d+"</label>");
-        
-        
+        // display all question: 
+        for(var i = 0; i < allQuestion.length; i++){
+            $(".question").append("<p>"+ allQuestion[i].question +"</p>");
+            $(".question").append("<input type=radio><label>"+allQuestion[i].answers.a+"</label> <input type=radio><label>"+allQuestion[i].answers.b+"</label> <input type=radio><label>"+allQuestion[i].answers.c+"</label> <input type=radio><label>"+allQuestion[i].answers.d+"</label>");
+        }
         $(".timer").append("<button>Done</button>");
-
 
         function run(){
             clearInterval(intervalId);
