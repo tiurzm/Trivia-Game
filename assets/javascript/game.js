@@ -1,6 +1,5 @@
 $(document).ready(function(){
     // Disney movie, source https://ohmy.disney.com/quiz/2016/09/02/quiz-guess-the-disney-movie-pop-culture-references/
-    
     var allQuestion =[
         {
             question: "1.Which movie includes a clear homage to Marlon Brando's character in The Godfather?",
@@ -43,13 +42,11 @@ $(document).ready(function(){
             answers: {a: "The Emperor's New Groove", b: "The Rescuers", c: "The Hunchback of Notre Dame", d: "Hercules"},
             correctAnswer: "d",
         },
-    ]; 
-
-
+    ];
     console.log(allQuestion);
     console.log(allQuestion[0].answers.a);
 
-    var timeRemain = 60;
+    var timeRemain = 10;
     var intervalId;
 
     $(".start").on("click", function(){
@@ -57,38 +54,56 @@ $(document).ready(function(){
         var newDiv = $("<div>");
         newDiv.addClass("timer");
         $("#target").append(newDiv);
-        $(".timer").append("<p>Time remaining:<span class=time> 60</span> seconds</p>");
+        $(".timer").append("<p>Time remaining:<span class=time> 10</span> seconds</p>");
         var question1 = $("<div>");
         question1.addClass("question");
         $(".timer").append(question1);
-        // display all question: 
-        for(var i = 0; i < allQuestion.length; i++){
+        question();
+        // displat done button
+        $(".timer").append("<button class=submit>Done</button>");
+        run();
+        $(".submit").on("click", function(){
+            done();
+        });
+        
+
+        // display all question:
+        function question(){
+            for(var i = 0; i < allQuestion.length; i++){
             $(".question").append("<p>"+ allQuestion[i].question +"</p>");
             $(".question").append("<input type=radio><label>"+allQuestion[i].answers.a+"</label> <input type=radio><label>"+allQuestion[i].answers.b+"</label> <input type=radio><label>"+allQuestion[i].answers.c+"</label> <input type=radio><label>"+allQuestion[i].answers.d+"</label>");
-        }
-        $(".timer").append("<button>Done</button>");
-
+            }
+        };
+        // set timer
         function run(){
             clearInterval(intervalId);
-            intervalId = setInterval(decremment, 1000);
+            intervalId = setInterval(decrement, 1000);
         };
 
-        function decremment(){
+        // decrement the time
+        function decrement(){
             timeRemain--;
             $(".time").html(timeRemain);
             if(timeRemain === 0){
                 stop();
                 alert("Time Up!");
+                done();
             }
         };
 
+        function done(){
+            $(".timer").remove();
+            var done = $("<div>");
+            done.addClass("all-done");
+            $("#target").append(done);
+            // display the game result
+            $(".all-done").append("<p>All Done</p><p>Correct Answers: <span class=true>0</span></p><p>Inccorect Answers: <span class=false>0</span></p><p>Unanswered: <span class=no-answer>0</span></p>");
+        }
+        // stop time
         function stop(){
             clearInterval(intervalId);
-            timeRemain = 60;
+            timeRemain = 10;
             $(".time").html(timeRemain);
         }
-
-        run();
-    
     });
 });
