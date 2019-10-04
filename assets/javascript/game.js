@@ -45,13 +45,13 @@ $(document).ready(function(){
     ];
 
     console.log(allQuestion);
-    
 
     var timeRemain = 60;
     var intervalId;
-    var right = "";
-    var wrong = "";
-    var none = ""; 
+    var playerChoice;
+    var right = 0;
+    var wrong = 0;
+    var none = 0; 
 
     $(".start").on("click", function(){
         $(this).remove();
@@ -63,7 +63,6 @@ $(document).ready(function(){
         question1.addClass("question");
         $(".timer").append(question1);
         question();
-        click();
         // display done button
         var newButton = $("<button>");
         newButton.addClass("submit");
@@ -71,9 +70,11 @@ $(document).ready(function(){
         $(".timer").append(newButton);
         // run the time
         // run();
+        click();
         $(".submit").on("click", function(){
             stop();
             done();
+            point();
         });
         
         // display all question:
@@ -97,9 +98,38 @@ $(document).ready(function(){
             $("input").on("click", function() {
                 var name = $(this).attr('name');
                 var value = $(`input[name='${name}']:checked`).val();
-                console.log(value);
+                playerChoice = value;
+                console.log(typeof playerChoice);
               });
         }
+
+        // display the result
+        function done(){
+            $(".timer").remove();
+            var done = $("<div>");
+            done.addClass("all-done");
+            $("#target").append(done);
+            // display the game result
+            var allDone = $("<p>");
+            allDone.text("All Done");
+            $(".all-done").append(allDone);
+            $(".all-done").append(`<p>Correct Answers: <span class="true">0</span></p><p>Inccorect Answers: <span class="false">0</span></p><p>Unanswered <span class="no-answer">0</span></p>`);
+        }
+
+        function point(){
+            for(var k = 0; k < allQuestion.length; k++){
+                console.log(typeof allQuestion[k].correctAnswer);
+                console.log(allQuestion[k].correctAnswer)
+                if(allQuestion[k].correctAnswer === playerChoice){
+                    right++;
+                    $(".true").text(right);
+                } else{
+                    wrong++;
+                    $(".false").text(wrong);
+                }
+            }
+            
+        };
 
         // set timer
         function run(){
@@ -117,19 +147,7 @@ $(document).ready(function(){
                 done();
             }
         };
-
-        // display the result
-        function done(){
-            $(".timer").remove();
-            var done = $("<div>");
-            done.addClass("all-done");
-            $("#target").append(done);
-            // display the game result
-            var allDone = $("<p>");
-            allDone.text("All Done");
-            $(".all-done").append(allDone);
-            $(".all-done").append(`<p>Correct Answers: <span class="true">0</span></p><p>Inccorect Answers: <span class="false">0</span></p><p>Unanswered <span class="no-answer">0</span></p>`);
-        }
+        
         // stop time
         function stop(){
             clearInterval(intervalId);
