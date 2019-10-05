@@ -48,10 +48,9 @@ $(document).ready(function(){
 
     var timeRemain = 60;
     var intervalId;
-    var playerChoice;
     var right = 0;
-    var wrong = 0;
-    var none = 0; 
+    var wrong = 0; 
+    var empty = 0; 
 
     $(".start").on("click", function(){
         $(this).remove();
@@ -70,7 +69,7 @@ $(document).ready(function(){
         $(".timer").append(newButton);
         // run the time
         // run();
-        click();
+        // click();
         $(".submit").on("click", function(){
             stop();
             done();
@@ -94,18 +93,16 @@ $(document).ready(function(){
             }
         };
 
-        function click (){
-            $("input").on("click", function() {
-                var name = $(this).attr('name');
-                var value = $(`input[name='${name}']:checked`).val();
-                playerChoice = value;
-                console.log(typeof playerChoice);
-              });
-        }
+        // function click (){
+        //     $("input").on("click", function() {
+        //         var name = $(this).attr('name');
+        //         var value = $(`input[name='${name}']:checked`).val();
+        //         console.log(value);
+        //       });
+        // }
 
         // display the result
-        function done(){
-            $(".timer").remove();
+        function done() {
             var done = $("<div>");
             done.addClass("all-done");
             $("#target").append(done);
@@ -116,19 +113,23 @@ $(document).ready(function(){
             $(".all-done").append(`<p>Correct Answers: <span class="true">0</span></p><p>Inccorect Answers: <span class="false">0</span></p><p>Unanswered <span class="no-answer">0</span></p>`);
         }
 
-        function point(){
-            for(var k = 0; k < allQuestion.length; k++){
-                console.log(typeof allQuestion[k].correctAnswer);
-                console.log(allQuestion[k].correctAnswer)
-                if(allQuestion[k].correctAnswer === playerChoice){
-                    right++;
-                    $(".true").text(right);
-                } else{
-                    wrong++;
-                    $(".false").text(wrong);
-                }
+        function point() {
+            for (var k = 0; k < allQuestion.length; k++) {
+              var answerForQuestion = $(`input[name='radio-${k}']:checked`).val();
+              var correctAnswer = allQuestion[k].correctAnswer;
+              if (answerForQuestion === correctAnswer) {
+                right++;
+              } else{
+                wrong++;
+              }
+              if(!answerForQuestion){
+                  empty++;
+              }
             }
-            
+            $(".true").text(right);
+            $(".false").text(wrong);
+            $(".no-answer").text(empty);
+            $(".timer").remove();
         };
 
         // set timer
