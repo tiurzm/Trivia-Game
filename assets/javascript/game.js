@@ -46,7 +46,7 @@ $(document).ready(function(){
 
     console.log(allQuestion);
 
-    var timeRemain = 60;
+    var timeRemain = 90;
     var intervalId;
     var right = 0;
     var wrong = 0; 
@@ -57,7 +57,7 @@ $(document).ready(function(){
         var newDiv = $("<div>");
         newDiv.addClass("timer");
         $("#target").append(newDiv);
-        $(".timer").append(`<p>Time remaining:<span class="time"> 60</span> seconds</p>`);
+        $(".timer").append(`<p>Time remaining:<span class="time"> 90</span> seconds</p>`);
         var question1 = $("<form>");
         question1.addClass("question");
         $(".timer").append(question1);
@@ -68,92 +68,86 @@ $(document).ready(function(){
         newButton.text("Done")
         $(".timer").append(newButton);
         // run the time
-        // run();
-        // click();
+        run();
+        decrement();
         $(".submit").on("click", function(){
             stop();
             done();
             point();
         });
         
-        // display all question:
-        function question(){
-            for(var i = 0; i < allQuestion.length; i++){
-                var newQues = $("<p>");
-                newQues.text(allQuestion[i].question);
-                $(".question").append(newQues);
-                // console.log(allQuestion[i]);
-                for(var j = 0; j < allQuestion[i].answers.length; j++) {
-                    var answer = allQuestion[i].answers[j];
-                    // console.log(answer);
-                    var answerEl = $(`<input type="radio" class="check" name="radio-${i}"><label>${answer}</label>`);
-                    answerEl.attr("value", `${answer}`)
-                    $(".question").append(answerEl);
-                }
-            }
-        };
-
-        // function click (){
-        //     $("input").on("click", function() {
-        //         var name = $(this).attr('name');
-        //         var value = $(`input[name='${name}']:checked`).val();
-        //         console.log(value);
-        //       });
-        // }
-
-        // display the result
-        function done() {
-            var done = $("<div>");
-            done.addClass("all-done");
-            $("#target").append(done);
-            // display the game result
-            var allDone = $("<p>");
-            allDone.text("All Done");
-            $(".all-done").append(allDone);
-            $(".all-done").append(`<p>Correct Answers: <span class="true">0</span></p><p>Inccorect Answers: <span class="false">0</span></p><p>Unanswered <span class="no-answer">0</span></p>`);
-        }
-
-        function point() {
-            for (var k = 0; k < allQuestion.length; k++) {
-              var answerForQuestion = $(`input[name='radio-${k}']:checked`).val();
-              var correctAnswer = allQuestion[k].correctAnswer;
-              if (answerForQuestion === correctAnswer) {
-                right++;
-              } else{
-                wrong++;
-              }
-              if(!answerForQuestion){
-                  empty++;
-              }
-            }
-            $(".true").text(right);
-            $(".false").text(wrong);
-            $(".no-answer").text(empty);
-            $(".timer").remove();
-        };
-
-        // set timer
-        function run(){
-            clearInterval(intervalId);
-            intervalId = setInterval(decrement, 1000);
-        };
-
-        // decrement the time
-        function decrement(){
-            timeRemain--;
-            $(".time").html(timeRemain);
-            if(timeRemain === 0){
-                stop();
-                alert("Time Up!");
-                done();
-            }
-        };
-        
-        // stop time
-        function stop(){
-            clearInterval(intervalId);
-            timeRemain = 60;
-            $(".time").html(timeRemain);
-        }
     });
+    
+    // display all question:
+    function question(){
+        for(var i = 0; i < allQuestion.length; i++){
+            var newQues = $("<p>");
+            newQues.text(allQuestion[i].question);
+            $(".question").append(newQues);
+            // console.log(allQuestion[i]);
+            for(var j = 0; j < allQuestion[i].answers.length; j++) {
+                var answer = allQuestion[i].answers[j];
+                // console.log(answer);
+                var answerEl = $(`<input type="radio" class="check" name="radio-${i}"><label>${answer}</label>`);
+                answerEl.attr("value", `${answer}`)
+                $(".question").append(answerEl);
+            }
+        }
+    };
+
+    // display the result
+    function done() {
+        var done = $("<div>");
+        done.addClass("all-done");
+        $("#target").append(done);
+        // display the game result
+        var allDone = $("<p>");
+        allDone.text("All Done");
+        $(".all-done").append(allDone);
+        $(".all-done").append(`<p>Correct Answers: <span class="true">0</span></p><p>Inccorect Answers: <span class="false">0</span></p><p>Unanswered <span class="no-answer">0</span></p>`);
+    }
+
+    function point() {
+        for (var k = 0; k < allQuestion.length; k++) {
+          var answerForQuestion = $(`input[name='radio-${k}']:checked`).val();
+          var correctAnswer = allQuestion[k].correctAnswer;
+          if (answerForQuestion === correctAnswer) {
+            right++;
+          } else{
+            wrong++;
+          }
+          if(!answerForQuestion){
+              empty++;
+          }
+        }
+        $(".true").text(right);
+        $(".false").text(wrong);
+        $(".no-answer").text(empty);
+        $(".timer").remove();
+    };
+
+    // set timer
+    function run(){
+        clearInterval(intervalId);
+        intervalId = setInterval(decrement, 1000);
+    };
+
+    // decrement the time
+    function decrement(){
+        timeRemain--;
+        $(".time").html(timeRemain);
+        if(timeRemain === 0){
+            stop();
+            alert("Time Up!");
+            done();
+            point();
+        }
+    };
+    
+    // stop time
+    function stop(){
+        clearInterval(intervalId);
+        timeRemain = 90;
+        $(".time").html(timeRemain);
+    }
 });
