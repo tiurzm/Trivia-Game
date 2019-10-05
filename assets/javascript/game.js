@@ -6,7 +6,7 @@ $(document).ready(function(){
             answers: ["Zootopia","Cinderella", "Tarzan", "Beauty and the Beast"],
             correctAnswer: "Zootopia",
         }, {
-            question: "2.Which movie references Elvi's unmistakable white jumpsuit?",
+            question: "2.Which movie references Elvis unmistakable white jumpsuit?",
             answers: [ "The Hunback of Notre Dame",  "Lilo & Stitch",  "Oliver & Company",  "A Bug's Life"],
             correctAnswer: "Lilo & Stitch",
         }, {
