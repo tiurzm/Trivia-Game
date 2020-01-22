@@ -65,7 +65,7 @@ $(document).ready(function(){
         // display done button
         var newButton = $("<button>");
         newButton.addClass("submit");
-        newButton.text("Done")
+        newButton.text("Submit")
         $(".timer").append(newButton);
         // run the time
         run();
